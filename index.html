@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIOM — Tushar Singh · Creative Director</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--ch:#0e0e0e;--ch2:#181818;--ch3:#232323;--iv:#f4efe6;--iv2:#b8b0a0;--go:#c8a84a;--go2:#e0c060;--go3:#7a6030;--si:#989898;--red:#b83428;--blue:#2050a0;--grn:#186850;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ch);color:var(--iv);font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;width:10px;height:10px;background:var(--go);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .2s;}
+.cursor-ring{position:fixed;width:38px;height:38px;border:1px solid rgba(200,168,74,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.3rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s;}
+nav.sc{background:rgba(10,10,10,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(200,168,74,.1);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.3em;color:var(--iv);text-decoration:none;}
+.logo span{color:var(--go);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--si);text-decoration:none;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;transition:color .3s;}
+.nav-links a:hover{color:var(--go);}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;}
+.hero-bg{position:absolute;inset:0;}
+.hero-svg{width:100%;height:100%;}
+.hero-content{position:relative;z-index:2;max-width:880px;padding:0 2rem;}
+.eyebrow{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--go);font-weight:700;margin-bottom:1.5rem;opacity:0;transform:translateY(20px);animation:fu .9s .3s forwards;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,9vw,8.5rem);font-weight:300;line-height:.92;letter-spacing:-.02em;color:var(--iv);margin-bottom:.3em;opacity:0;transform:translateY(28px);animation:fu 1s .5s forwards;}
+.hero-title em{font-style:italic;color:var(--go);}
+.hero-sub{font-size:.82rem;color:var(--si);margin:2rem auto 2.8rem;max-width:480px;line-height:1.85;opacity:0;transform:translateY(18px);animation:fu .9s .8s forwards;}
+.hero-cta{display:inline-flex;align-items:center;gap:.8rem;padding:.9rem 2.4rem;border:1px solid var(--go);color:var(--go);text-decoration:none;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;font-weight:700;opacity:0;animation:fu .9s 1.1s forwards;position:relative;overflow:hidden;transition:color .4s;}
+.hero-cta::before{content:'';position:absolute;inset:0;background:var(--go);transform:translateX(-101%);transition:transform .4s cubic-bezier(.7,0,.3,1);z-index:-1;}
+.hero-cta:hover{color:var(--ch);}.hero-cta:hover::before{transform:translateX(0);}
+.scroll-line{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);width:1px;height:55px;background:linear-gradient(to bottom,transparent,var(--go));animation:sp 2s ease-in-out infinite;}
+@keyframes sp{0%,100%{opacity:.3;}50%{opacity:.9;}}
+@keyframes fu{to{opacity:1;transform:translateY(0);}}
+
+/* SECTIONS */
+section{padding:6rem 3rem;position:relative;}
+.s-head{display:flex;align-items:baseline;gap:1.8rem;margin-bottom:3.5rem;}
+.s-num{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--go);opacity:.6;letter-spacing:.1em;}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:300;line-height:1.05;}
+.s-title em{font-style:italic;color:var(--go);}
+.s-div{flex:1;height:1px;background:linear-gradient(to right,rgba(200,168,74,.3),transparent);align-self:center;margin-left:.8rem;}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.32s;}
+.band{height:1px;background:linear-gradient(to right,transparent,rgba(200,168,74,.22),transparent);}
+
+/* UGC */
+#ugc{background:var(--ch);}
+.ugc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.ugc-item{position:relative;overflow:hidden;cursor:none;}
+.ugc-item:nth-child(1){grid-row:span 2;min-height:540px;}
+.ugc-item:nth-child(2),.ugc-item:nth-child(3),.ugc-item:nth-child(4),.ugc-item:nth-child(5){aspect-ratio:4/3;}
+.ugc-art{position:absolute;inset:0;transition:transform .7s cubic-bezier(.16,1,.3,1);}
+.ugc-item:hover .ugc-art{transform:scale(1.06);}
+.ugc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,4,2,.95) 0%,rgba(6,4,2,.1) 50%,transparent 70%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;}
+.ugc-item:hover .ugc-ov{opacity:1;}
+.ugc-tag{display:inline-block;padding:.2rem .6rem;border:1px solid var(--go);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--go);margin-bottom:.4rem;width:fit-content;}
+.ugc-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--iv);}
+.ugc-meta{font-size:.62rem;color:var(--si);margin-top:.22rem;}
+
+/* CAMPAIGNS */
+#ai-campaigns{background:var(--ch2);}
+.camp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;}
+.camp-card{border:1px solid rgba(200,168,74,.12);padding:2.2rem;position:relative;overflow:hidden;transition:border-color .4s,transform .4s;}
+.camp-card:hover{border-color:rgba(200,168,74,.45);transform:translateY(-3px);}
+.camp-card::before{content:'';position:absolute;top:0;left:0;width:45px;height:2px;background:var(--go);transition:width .5s cubic-bezier(.16,1,.3,1);}
+.camp-card:hover::before{width:100%;}
+.camp-lbl{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--go);margin-bottom:1.2rem;font-weight:700;}
+.camp-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--iv);margin-bottom:.8rem;line-height:1.1;}
+.camp-desc{font-size:.8rem;color:var(--si);line-height:1.85;margin-bottom:1.8rem;}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:1.4rem;}
+.ba-p{aspect-ratio:16/9;position:relative;overflow:hidden;}
+.ba-lbl{position:absolute;top:.35rem;left:.35rem;font-size:.5rem;letter-spacing:.14em;padding:.15rem .4rem;background:rgba(0,0,0,.75);color:var(--si);z-index:2;text-transform:uppercase;}
+.tools{display:flex;gap:.4rem;flex-wrap:wrap;}
+.tbadge{padding:.2rem .58rem;background:rgba(200,168,74,.07);border:1px solid rgba(200,168,74,.18);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--go2);}
+
+/* COMMERCIALS */
+#ai-commercials{background:var(--ch);}
+.comm-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.comm-card{position:relative;overflow:hidden;aspect-ratio:9/16;cursor:none;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.comm-card:hover{transform:scale(1.025);z-index:2;}
+.comm-art{position:absolute;inset:0;}
+.play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;}
+.play-ring{width:54px;height:54px;border:1.5px solid rgba(244,239,230,.42);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.28);backdrop-filter:blur(4px);transition:all .3s;}
+.comm-card:hover .play-ring{border-color:var(--go);background:rgba(200,168,74,.12);transform:scale(1.1);}
+.comm-info{position:absolute;bottom:0;left:0;right:0;padding:1.4rem;z-index:3;}
+.comm-client{font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--go);margin-bottom:.22rem;}
+.comm-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--iv);font-weight:300;}
+.comm-dur{font-size:.6rem;color:var(--si);margin-top:.22rem;font-family:'DM Mono',monospace;}
+.ai-badge{position:absolute;top:.9rem;right:.9rem;padding:.16rem .52rem;background:rgba(200,168,74,.1);border:1px solid rgba(200,168,74,.28);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--go);z-index:3;}
+
+/* DESIGN */
+#graphic-design{background:var(--ch2);}
+.design-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:3px;}
+.di{position:relative;overflow:hidden;cursor:none;}
+.di:nth-child(1){grid-column:1/3;grid-row:1/3;}
+.di:nth-child(6){grid-column:3/5;grid-row:2/4;}
+.di-inner{width:100%;height:100%;transition:transform .8s cubic-bezier(.16,1,.3,1);}
+.di:hover .di-inner{transform:scale(1.07);}
+.di-ov{position:absolute;inset:0;background:rgba(6,6,6,.84);opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem;}
+.di:hover .di-ov{opacity:1;}
+.di-ov svg{color:var(--go);}
+.di-ov span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--si);}
+
+/* ABOUT */
+#about{background:var(--ch);overflow:hidden;}
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:center;}
+.portrait-box{aspect-ratio:3/4;position:relative;overflow:hidden;}
+.portrait-box::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,168,74,.2);}
+.p-acc{position:absolute;top:-1px;right:-1px;width:70px;height:70px;border-top:2px solid var(--go);border-right:2px solid var(--go);z-index:2;}
+.p-acc-b{position:absolute;bottom:-1px;left:-1px;width:70px;height:70px;border-bottom:2px solid var(--go);border-left:2px solid var(--go);z-index:2;}
+.a-eye{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--go);font-weight:700;margin-bottom:1.3rem;}
+.a-name{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:300;line-height:1.05;color:var(--iv);margin-bottom:.25em;}
+.a-role{font-size:.76rem;letter-spacing:.14em;color:var(--si);text-transform:uppercase;margin-bottom:2.8rem;}
+.a-quote{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;font-weight:300;color:var(--iv2);line-height:1.6;margin-bottom:2.2rem;border-left:2px solid var(--go);padding-left:1.4rem;}
+.a-bio{font-size:.82rem;color:var(--si);line-height:2;margin-bottom:2.8rem;}
+.a-stats{display:flex;gap:3rem;}
+.stat-v{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--go);line-height:1;}
+.stat-l{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--si);margin-top:.25rem;}
+
+/* CONTACT */
+#contact{background:var(--ch2);}
+.contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start;}
+.c-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.8rem);font-weight:300;line-height:1.05;color:var(--iv);margin-bottom:1.8rem;}
+.c-title em{font-style:italic;color:var(--go);}
+.c-info{color:var(--si);font-size:.82rem;line-height:2;margin-bottom:2.8rem;}
+.soc-links{display:flex;flex-direction:column;gap:.8rem;}
+.soc-link{display:flex;align-items:center;gap:1rem;color:var(--si);text-decoration:none;font-size:.72rem;letter-spacing:.12em;transition:color .3s;padding-bottom:.9rem;border-bottom:1px solid rgba(200,168,74,.08);}
+.soc-link:hover{color:var(--go);}
+.soc-arr{margin-left:auto;transition:transform .3s;color:var(--go);}
+.soc-link:hover .soc-arr{transform:translateX(4px);}
+.fg{margin-bottom:1.6rem;}
+.fg label{display:block;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--go);font-weight:700;margin-bottom:.6rem;}
+.fg input,.fg textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(200,168,74,.2);color:var(--iv);font-family:'Syne',sans-serif;font-size:.88rem;padding:.7rem 0;outline:none;transition:border-color .3s;}
+.fg input:focus,.fg textarea:focus{border-bottom-color:var(--go);}
+.fg textarea{resize:none;height:90px;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(152,152,152,.35);}
+.sub-btn{display:flex;align-items:center;justify-content:center;gap:.9rem;padding:1rem 2rem;background:var(--go);color:var(--ch);border:none;font-family:'Syne',sans-serif;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;cursor:none;transition:all .3s;width:100%;margin-top:.8rem;}
+.sub-btn:hover{background:var(--go2);transform:translateY(-2px);}
+footer{padding:2.5rem 3rem;border-top:1px solid rgba(200,168,74,.08);display:flex;align-items:center;justify-content:space-between;background:var(--ch);}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;letter-spacing:.3em;color:var(--iv2);}
+.f-copy{font-size:.6rem;color:var(--si);opacity:.45;}
+.f-tag{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--go);opacity:.5;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--ch);}::-webkit-scrollbar-thumb{background:var(--go3);}
+::selection{background:var(--go);color:var(--ch);}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<nav id="nav">
+  <a href="#" class="logo">AXI<span>O</span>M</a>
+  <ul class="nav-links">
+    <li><a href="#ugc">UGC</a></li><li><a href="#ai-campaigns">Campaigns</a></li>
+    <li><a href="#ai-commercials">Commercials</a></li><li><a href="#graphic-design">Design</a></li>
+    <li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg class="hero-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hg1" cx="50%" cy="45%" r="65%"><stop offset="0%" stop-color="#3a2600" stop-opacity=".6"/><stop offset="100%" stop-color="#080600" stop-opacity="0"/></radialGradient>
+        <radialGradient id="hg2" cx="18%" cy="22%" r="38%"><stop offset="0%" stop-color="#c8a84a" stop-opacity=".07"/><stop offset="100%" stop-color="#080600" stop-opacity="0"/></radialGradient>
+        <radialGradient id="hg3" cx="82%" cy="78%" r="38%"><stop offset="0%" stop-color="#c8a84a" stop-opacity=".05"/><stop offset="100%" stop-color="#080600" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="1400" height="900" fill="#0b0906"/>
+      <rect width="1400" height="900" fill="url(#hg1)"/>
+      <rect width="1400" height="900" fill="url(#hg2)"/>
+      <rect width="1400" height="900" fill="url(#hg3)"/>
+      <!-- Grid -->
+      <g stroke="rgba(200,168,74,0.04)" stroke-width="1">
+        <line x1="0" y1="90" x2="1400" y2="90"/><line x1="0" y1="180" x2="1400" y2="180"/><line x1="0" y1="270" x2="1400" y2="270"/><line x1="0" y1="360" x2="1400" y2="360"/><line x1="0" y1="450" x2="1400" y2="450"/><line x1="0" y1="540" x2="1400" y2="540"/><line x1="0" y1="630" x2="1400" y2="630"/><line x1="0" y1="720" x2="1400" y2="720"/><line x1="0" y1="810" x2="1400" y2="810"/>
+        <line x1="100" y1="0" x2="100" y2="900"/><line x1="200" y1="0" x2="200" y2="900"/><line x1="300" y1="0" x2="300" y2="900"/><line x1="400" y1="0" x2="400" y2="900"/><line x1="500" y1="0" x2="500" y2="900"/><line x1="600" y1="0" x2="600" y2="900"/><line x1="700" y1="0" x2="700" y2="900"/><line x1="800" y1="0" x2="800" y2="900"/><line x1="900" y1="0" x2="900" y2="900"/><line x1="1000" y1="0" x2="1000" y2="900"/><line x1="1100" y1="0" x2="1100" y2="900"/><line x1="1200" y1="0" x2="1200" y2="900"/><line x1="1300" y1="0" x2="1300" y2="900"/>
+      </g>
+      <!-- Rings -->
+      <circle cx="700" cy="450" r="330" fill="none" stroke="rgba(200,168,74,0.04)" stroke-width="1"/>
+      <circle cx="700" cy="450" r="240" fill="none" stroke="rgba(200,168,74,0.06)" stroke-width="1"/>
+      <circle cx="700" cy="450" r="150" fill="none" stroke="rgba(200,168,74,0.05)" stroke-width="1"/>
+      <!-- Corner marks -->
+      <path d="M55 38 L95 38 M55 38 L55 78" stroke="rgba(200,168,74,0.35)" stroke-width="1.5" fill="none"/>
+      <path d="M1345 38 L1305 38 M1345 38 L1345 78" stroke="rgba(200,168,74,0.35)" stroke-width="1.5" fill="none"/>
+      <path d="M55 862 L95 862 M55 862 L55 822" stroke="rgba(200,168,74,0.35)" stroke-width="1.5" fill="none"/>
+      <path d="M1345 862 L1305 862 M1345 862 L1345 822" stroke="rgba(200,168,74,0.35)" stroke-width="1.5" fill="none"/>
+      <!-- Particles -->
+      <circle cx="180" cy="200" r="1.5" fill="rgba(200,168,74,.55)"><animate attributeName="opacity" values=".55;1;.55" dur="3.1s" repeatCount="indefinite"/></circle>
+      <circle cx="1220" cy="180" r="1" fill="rgba(200,168,74,.4)"><animate attributeName="opacity" values=".4;1;.4" dur="4.2s" repeatCount="indefinite"/></circle>
+      <circle cx="295" cy="705" r="1.5" fill="rgba(200,168,74,.35)"><animate attributeName="opacity" values=".35;.9;.35" dur="2.9s" repeatCount="indefinite"/></circle>
+      <circle cx="1100" cy="640" r="1" fill="rgba(200,168,74,.45)"><animate attributeName="opacity" values=".45;1;.45" dur="3.8s" repeatCount="indefinite"/></circle>
+      <circle cx="900" cy="120" r="1.5" fill="rgba(200,168,74,.3)"><animate attributeName="opacity" values=".3;.8;.3" dur="5.1s" repeatCount="indefinite"/></circle>
+      <circle cx="450" cy="780" r="1" fill="rgba(200,168,74,.4)"><animate attributeName="opacity" values=".4;1;.4" dur="3.6s" repeatCount="indefinite"/></circle>
+      <circle cx="650" cy="80" r="1.2" fill="rgba(200,168,74,.35)"><animate attributeName="opacity" values=".35;.9;.35" dur="4.5s" repeatCount="indefinite"/></circle>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Creative Direction · AI Artistry · Visual Storytelling</div>
+    <h1 class="hero-title">Where <em>Vision</em><br>Meets Craft</h1>
+    <p class="hero-sub">Cinematic campaigns. AI-powered narratives. Human intuition at every frame — at the intersection of science, art, and cultural intelligence.</p>
+    <a href="#ugc" class="hero-cta"><span>Explore Work</span><svg width="15" height="9" viewBox="0 0 15 9" fill="none"><path d="M0 4.5h13M9 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.2"/></svg></a>
+  </div>
+  <div class="scroll-line"></div>
+</section>
+<div class="band"></div>
+
+<!-- ═══ UGC POSTS ═══ -->
+<section id="ugc">
+  <div class="s-head rv"><span class="s-num">01</span><h2 class="s-title">UGC <em>Posts</em></h2><div class="s-div"></div><span style="font-size:.64rem;color:var(--si);white-space:nowrap;letter-spacing:.08em">Authentic · Influencer-Crafted · Platform-Native</span></div>
+  <div class="ugc-grid rv">
+
+    <!-- UGC 1 — Perfume (tall) -->
+    <div class="ugc-item">
+      <div class="ugc-art">
+        <svg width="100%" height="100%" viewBox="0 0 420 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="p1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#161006"/><stop offset="50%" stop-color="#26190a"/><stop offset="100%" stop-color="#161006"/></linearGradient>
+            <radialGradient id="p1gl" cx="50%" cy="38%" r="52%"><stop offset="0%" stop-color="#c8a84a" stop-opacity=".18"/><stop offset="100%" stop-color="#161006" stop-opacity="0"/></radialGradient>
+            <linearGradient id="p1bot" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#6a5010"/><stop offset="28%" stop-color="#e8c860"/><stop offset="55%" stop-color="#c8a840"/><stop offset="100%" stop-color="#6a5010"/></linearGradient>
+            <linearGradient id="p1nk" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#5a4210"/><stop offset="40%" stop-color="#c8a840"/><stop offset="100%" stop-color="#5a4210"/></linearGradient>
+            <filter id="gfx"><feGaussianBlur stdDeviation="10" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+          </defs>
+          <rect width="420" height="640" fill="url(#p1bg)"/>
+          <rect width="420" height="640" fill="url(#p1gl)"/>
+          <!-- atmosphere texture -->
+          <line x1="0" y1="0" x2="420" y2="640" stroke="rgba(200,168,74,.025)" stroke-width="100"/>
+          <!-- base glow -->
+          <ellipse cx="210" cy="490" rx="100" ry="26" fill="rgba(200,168,74,.22)" filter="url(#gfx)"/>
+          <!-- bottle body -->
+          <rect x="152" y="218" width="116" height="275" rx="14" fill="url(#p1bot)"/>
+          <!-- glass highlight -->
+          <rect x="160" y="226" width="20" height="258" rx="6" fill="rgba(255,255,255,.2)"/>
+          <rect x="185" y="226" width="7" height="258" rx="2" fill="rgba(255,255,255,.09)"/>
+          <!-- label -->
+          <rect x="160" y="318" width="100" height="110" rx="3" fill="rgba(12,8,2,.6)"/>
+          <rect x="165" y="323" width="90" height="100" rx="2" fill="none" stroke="rgba(200,168,74,.2)" stroke-width=".6"/>
+          <text x="210" y="358" text-anchor="middle" fill="rgba(244,235,200,.92)" font-size="9" font-family="serif" letter-spacing="4" font-style="italic">NOCTURNE</text>
+          <line x1="170" y1="364" x2="250" y2="364" stroke="rgba(200,168,74,.5)" stroke-width=".6"/>
+          <text x="210" y="377" text-anchor="middle" fill="rgba(200,168,74,.72)" font-size="5.5" font-family="serif" letter-spacing="3">BY LUMIÈRE</text>
+          <text x="210" y="392" text-anchor="middle" fill="rgba(244,235,200,.32)" font-size="4.5" font-family="monospace" letter-spacing="2">EAU DE PARFUM · 50ML</text>
+          <!-- neck -->
+          <rect x="178" y="180" width="64" height="42" rx="6" fill="url(#p1nk)"/>
+          <rect x="183" y="185" width="11" height="30" rx="3" fill="rgba(255,255,255,.14)"/>
+          <!-- cap -->
+          <rect x="172" y="140" width="76" height="44" rx="9" fill="#1a1206"/>
+          <rect x="178" y="144" width="14" height="32" rx="4" fill="rgba(255,255,255,.09)"/>
+          <rect x="172" y="140" width="76" height="9" rx="5" fill="rgba(80,60,20,.8)"/>
+          <!-- sparkles -->
+          <circle cx="125" cy="258" r="2" fill="#e8c860" opacity=".72"><animate attributeName="opacity" values=".72;1;.72" dur="2.6s" repeatCount="indefinite"/></circle>
+          <circle cx="300" cy="235" r="1.5" fill="#e8c860" opacity=".52"><animate attributeName="opacity" values=".52;1;.52" dur="3.2s" repeatCount="indefinite"/></circle>
+          <circle cx="112" cy="368" r="1.5" fill="#e8c860" opacity=".42"><animate attributeName="opacity" values=".42;.9;.42" dur="2.3s" repeatCount="indefinite"/></circle>
+          <circle cx="308" cy="355" r="2" fill="#e8c860" opacity=".62"><animate attributeName="opacity" values=".62;1;.62" dur="3.9s" repeatCount="indefinite"/></circle>
+          <circle cx="142" cy="455" r="1.2" fill="#e8c860" opacity=".48"><animate attributeName="opacity" values=".48;1;.48" dur="3s" repeatCount="indefinite"/></circle>
+          <circle cx="285" cy="148" r="1" fill="#e8c860" opacity=".38"><animate attributeName="opacity" values=".38;.9;.38" dur="4.1s" repeatCount="indefinite"/></circle>
+          <!-- bottom fade -->
+          <rect x="0" y="510" width="420" height="130" fill="url(#p1bg)" opacity=".8"/>
+        </svg>
+      </div>
+      <div class="ugc-ov">
+        <span class="ugc-tag">Beauty · Fragrance</span>
+        <div class="ugc-name">Nocturne by Lumière — TikTok Unboxing</div>
+        <div class="ugc-meta">4.2M views · @luxe.aesthetics · Reels + TikTok</div>
+      </div>
+    </div>
+
+    <!-- UGC 2 — Sneaker -->
+    <div class="ugc-item">
+      <div class="ugc-art">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sk1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#04060e"/><stop offset="100%" stop-color="#0a0e1c"/></linearGradient>
+            <radialGradient id="sk1gl" cx="50%" cy="62%" r="48%"><stop offset="0%" stop-color="#2050a0" stop-opacity=".22"/><stop offset="100%" stop-color="#04060e" stop-opacity="0"/></radialGradient>
+            <linearGradient id="sk1up" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c0cce0"/><stop offset="100%" stop-color="#7888a8"/></linearGradient>
+            <linearGradient id="sk1sl" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#304898"/><stop offset="100%" stop-color="#181e58"/></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#sk1bg)"/>
+          <rect width="400" height="300" fill="url(#sk1gl)"/>
+          <!-- Ground shadow -->
+          <ellipse cx="205" cy="240" rx="138" ry="16" fill="rgba(32,80,160,.16)"/>
+          <!-- Sole -->
+          <path d="M50 222 Q205 242 352 222 L356 236 Q205 256 46 236 Z" fill="url(#sk1sl)"/>
+          <!-- Upper -->
+          <path d="M56 220 Q84 172 162 155 L268 150 Q322 152 342 175 L348 208 Q342 222 322 224 L68 224 Q52 222 56 220 Z" fill="url(#sk1up)"/>
+          <!-- mesh lines -->
+          <path d="M132 156 L116 222" stroke="rgba(32,80,160,.2)" stroke-width=".9"/>
+          <path d="M162 153 L154 222" stroke="rgba(32,80,160,.2)" stroke-width=".9"/>
+          <path d="M196 151 L193 222" stroke="rgba(32,80,160,.2)" stroke-width=".9"/>
+          <path d="M230 151 L232 222" stroke="rgba(32,80,160,.18)" stroke-width=".9"/>
+          <path d="M262 152 L270 222" stroke="rgba(32,80,160,.15)" stroke-width=".9"/>
+          <path d="M56 196 L348 193" stroke="rgba(32,80,160,.16)" stroke-width=".9"/>
+          <path d="M58 210 L348 208" stroke="rgba(32,80,160,.12)" stroke-width=".9"/>
+          <!-- Tongue -->
+          <path d="M162 155 L150 120 L173 118 L186 155" fill="rgba(192,204,224,.92)" stroke="rgba(32,80,160,.2)" stroke-width=".8"/>
+          <!-- Swoosh -->
+          <path d="M202 186 Q244 173 288 178 Q266 190 202 186Z" fill="rgba(32,80,160,.72)"/>
+          <!-- Laces -->
+          <path d="M173 160 Q192 155 212 158" fill="none" stroke="rgba(244,244,254,.65)" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M171 171 Q192 166 214 169" fill="none" stroke="rgba(244,244,254,.5)" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M169 182 Q192 177 216 180" fill="none" stroke="rgba(244,244,254,.38)" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- label -->
+          <text x="196" y="278" text-anchor="middle" fill="rgba(32,80,160,.45)" font-size="8.5" font-family="monospace" letter-spacing="6">VELOCITY 01</text>
+          <!-- motion lines -->
+          <line x1="14" y1="198" x2="52" y2="198" stroke="rgba(32,80,160,.42)" stroke-width="1" stroke-dasharray="5,4"/>
+          <line x1="8" y1="208" x2="52" y2="208" stroke="rgba(32,80,160,.26)" stroke-width=".9" stroke-dasharray="4,5"/>
+          <line x1="14" y1="218" x2="52" y2="218" stroke="rgba(32,80,160,.16)" stroke-width=".7" stroke-dasharray="3,6"/>
+        </svg>
+      </div>
+      <div class="ugc-ov">
+        <span class="ugc-tag">Footwear · Lifestyle</span>
+        <div class="ugc-name">GRND Runner — Street Campaign</div>
+        <div class="ugc-meta">2.8M views · @streetwear.chronicles</div>
+      </div>
+    </div>
+
+    <!-- UGC 3 — Lipstick -->
+    <div class="ugc-item">
+      <div class="ugc-art">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lp1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#120507"/><stop offset="100%" stop-color="#1e0a0e"/></linearGradient>
+            <radialGradient id="lp1gl" cx="50%" cy="46%" r="50%"><stop offset="0%" stop-color="#b83428" stop-opacity=".22"/><stop offset="100%" stop-color="#120507" stop-opacity="0"/></radialGradient>
+            <linearGradient id="lp1tip" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#780e0e"/><stop offset="35%" stop-color="#c03028"/><stop offset="70%" stop-color="#e04436"/><stop offset="100%" stop-color="#860e0e"/></linearGradient>
+            <linearGradient id="lp1tube" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#280c0c"/><stop offset="40%" stop-color="#481c1c"/><stop offset="100%" stop-color="#280c0c"/></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#lp1bg)"/>
+          <rect width="400" height="300" fill="url(#lp1gl)"/>
+          <!-- petal accents -->
+          <ellipse cx="88" cy="108" rx="38" ry="14" fill="rgba(184,52,40,.12)" transform="rotate(-28 88 108)"/>
+          <ellipse cx="315" cy="145" rx="30" ry="12" fill="rgba(184,52,40,.09)" transform="rotate(22 315 145)"/>
+          <ellipse cx="68" cy="200" rx="45" ry="16" fill="rgba(184,52,40,.08)" transform="rotate(-38 68 200)"/>
+          <ellipse cx="335" cy="88" rx="24" ry="9" fill="rgba(184,52,40,.06)" transform="rotate(16 335 88)"/>
+          <!-- Tube body -->
+          <rect x="172" y="85" width="56" height="162" rx="6" fill="url(#lp1tube)"/>
+          <rect x="177" y="90" width="9" height="150" rx="3" fill="rgba(255,255,255,.1)"/>
+          <!-- label band -->
+          <rect x="172" y="178" width="56" height="44" rx="2" fill="rgba(184,52,40,.22)" stroke="rgba(184,52,40,.32)" stroke-width=".5"/>
+          <text x="200" y="198" text-anchor="middle" fill="rgba(244,228,225,.78)" font-size="6" font-family="serif" letter-spacing="2.5">VELOUR</text>
+          <text x="200" y="210" text-anchor="middle" fill="rgba(184,52,40,.72)" font-size="4" font-family="serif" letter-spacing="1.5">N° 07 · ROUGE</text>
+          <!-- Bullet tip -->
+          <path d="M172 85 L200 46 L228 85 Z" fill="url(#lp1tip)"/>
+          <path d="M178 85 L200 52 L222 85" fill="rgba(255,255,255,.14)"/>
+          <!-- shadow -->
+          <ellipse cx="200" cy="252" rx="42" ry="9" fill="rgba(184,52,40,.14)"/>
+        </svg>
+      </div>
+      <div class="ugc-ov">
+        <span class="ugc-tag">Cosmetics · Beauty</span>
+        <div class="ugc-name">Velour Lip — GRWM Content</div>
+        <div class="ugc-meta">6.1M views · @beautycode.lab</div>
+      </div>
+    </div>
+
+    <!-- UGC 4 — Watch -->
+    <div class="ugc-item">
+      <div class="ugc-art">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="w1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#07090f"/><stop offset="100%" stop-color="#0d111e"/></linearGradient>
+            <radialGradient id="w1gl" cx="50%" cy="50%" r="44%"><stop offset="0%" stop-color="#c8a84a" stop-opacity=".14"/><stop offset="100%" stop-color="#07090f" stop-opacity="0"/></radialGradient>
+            <linearGradient id="w1case" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#585860"/><stop offset="35%" stop-color="#a0a0a8"/><stop offset="65%" stop-color="#787880"/><stop offset="100%" stop-color="#484850"/></linearGradient>
+            <linearGradient id="w1dial" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0c0e1c"/><stop offset="100%" stop-color="#161a26"/></linearGradient>
+            <linearGradient id="w1str" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#160e06"/><stop offset="50%" stop-color="#261a0e"/><stop offset="100%" stop-color="#160e06"/></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#w1bg)"/>
+          <rect width="400" height="300" fill="url(#w1gl)"/>
+          <!-- Strap top -->
+          <rect x="182" y="22" width="36" height="66" rx="5" fill="url(#w1str)"/>
+          <rect x="186" y="26" width="5" height="58" rx="2" fill="rgba(255,255,255,.05)"/>
+          <!-- Case -->
+          <circle cx="200" cy="150" r="78" fill="url(#w1case)"/>
+          <circle cx="200" cy="150" r="70" fill="url(#w1dial)"/>
+          <circle cx="200" cy="150" r="75" fill="none" stroke="rgba(200,168,74,.28)" stroke-width=".8"/>
+          <!-- Markers -->
+          <rect x="198.5" y="82" width="3" height="10" rx="1" fill="rgba(244,238,226,.82)"/>
+          <rect x="198.5" y="208" width="3" height="10" rx="1" fill="rgba(244,238,226,.48)"/>
+          <rect x="132" y="148.5" width="10" height="3" rx="1" fill="rgba(244,238,226,.48)"/>
+          <rect x="258" y="148.5" width="10" height="3" rx="1" fill="rgba(244,238,226,.48)"/>
+          <!-- Minute markers -->
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(30 200 150)"/>
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(60 200 150)"/>
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(120 200 150)"/>
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(150 200 150)"/>
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(210 200 150)"/>
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(240 200 150)"/>
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(300 200 150)"/>
+          <rect x="199" y="83" width="2" height="7" rx=".8" fill="rgba(244,238,226,.3)" transform="rotate(330 200 150)"/>
+          <!-- date window -->
+          <rect x="222" y="143" width="18" height="14" rx="2" fill="rgba(244,238,226,.08)" stroke="rgba(200,168,74,.3)" stroke-width=".6"/>
+          <text x="231" y="153" text-anchor="middle" fill="rgba(244,238,226,.72)" font-size="5" font-family="monospace">14</text>
+          <!-- brand -->
+          <text x="200" y="130" text-anchor="middle" fill="rgba(244,238,226,.48)" font-size="5.5" font-family="serif" letter-spacing="3">CHRONO I</text>
+          <text x="200" y="140" text-anchor="middle" fill="rgba(200,168,74,.38)" font-size="4" font-family="monospace" letter-spacing="1.5">AUTOMATIC</text>
+          <!-- Hands -->
+          <line x1="200" y1="150" x2="200" y2="96" stroke="rgba(244,238,226,.88)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="200" y1="150" x2="234" y2="150" stroke="rgba(200,168,74,.9)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="200" y1="150" x2="192" y2="176" stroke="rgba(184,52,40,.82)" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="200" cy="150" r="4" fill="url(#w1case)"/>
+          <circle cx="200" cy="150" r="2" fill="rgba(200,168,74,.92)"/>
+          <!-- Crown -->
+          <rect x="276" y="144" width="12" height="14" rx="3" fill="url(#w1case)"/>
+          <!-- Strap bottom -->
+          <rect x="182" y="214" width="36" height="54" rx="5" fill="url(#w1str)"/>
+          <rect x="186" y="218" width="5" height="46" rx="2" fill="rgba(255,255,255,.05)"/>
+          <!-- buckle -->
+          <rect x="190" y="252" width="20" height="8" rx="2" fill="rgba(90,90,100,.8)" stroke="rgba(140,140,150,.4)" stroke-width=".6"/>
+          <line x1="200" y1="252" x2="200" y2="260" stroke="rgba(140,140,150,.6)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="ugc-ov">
+        <span class="ugc-tag">Luxury · Timepieces</span>
+        <div class="ugc-name">Chrono I — Unboxing Reel</div>
+        <div class="ugc-meta">1.9M views · @watchgasm</div>
+      </div>
+    </div>
+
+    <!-- UGC 5 — Smoothie -->
+    <div class="ugc-item">
+      <div class="ugc-art">
+        <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sm1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#030c05"/><stop offset="100%" stop-color="#071608"/></linearGradient>
+            <radialGradient id="sm1gl" cx="50%" cy="46%" r="50%"><stop offset="0%" stop-color="#186850" stop-opacity=".22"/><stop offset="100%" stop-color="#030c05" stop-opacity="0"/></radialGradient>
+            <linearGradient id="sm1cup" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#184838"/><stop offset="40%" stop-color="#286858"/><stop offset="100%" stop-color="#184838"/></linearGradient>
+            <linearGradient id="sm1liq" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#38a870"/><stop offset="100%" stop-color="#1c6840"/></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#sm1bg)"/>
+          <rect width="400" height="300" fill="url(#sm1gl)"/>
+          <!-- leaf accents bg -->
+          <ellipse cx="75" cy="92" rx="52" ry="20" fill="rgba(24,104,80,.12)" transform="rotate(-32 75 92)"/>
+          <ellipse cx="328" cy="175" rx="46" ry="18" fill="rgba(24,104,80,.1)" transform="rotate(26 328 175)"/>
+          <ellipse cx="55" cy="212" rx="58" ry="22" fill="rgba(24,104,80,.08)" transform="rotate(-42 55 212)"/>
+          <!-- Cup body -->
+          <path d="M155 68 L163 238 L237 238 L245 68 Z" fill="url(#sm1cup)"/>
+          <!-- cup shine -->
+          <path d="M159 70 L165 236 L172 236 L166 70 Z" fill="rgba(255,255,255,.11)"/>
+          <!-- liquid -->
+          <path d="M158 154 L163 237 L237 237 L242 154 Z" fill="url(#sm1liq)" opacity=".88"/>
+          <!-- liquid surface -->
+          <path d="M158 154 Q200 148 242 154 Q200 160 158 154 Z" fill="rgba(90,210,150,.3)"/>
+          <!-- Lid -->
+          <rect x="150" y="58" width="100" height="14" rx="7" fill="rgba(38,94,70,.82)" stroke="rgba(24,104,80,.5)" stroke-width="1"/>
+          <!-- straw -->
+          <rect x="208" y="12" width="8" height="106" rx="4" fill="rgba(244,244,234,.62)"/>
+          <rect x="210" y="14" width="2.5" height="102" rx="1.2" fill="rgba(255,255,255,.22)"/>
+          <!-- label -->
+          <rect x="163" y="162" width="74" height="58" rx="3" fill="rgba(12,38,22,.65)" stroke="rgba(24,104,80,.25)" stroke-width=".7"/>
+          <circle cx="200" cy="176" r="12" fill="rgba(24,104,80,.42)" stroke="rgba(24,104,80,.62)" stroke-width=".9"/>
+          <path d="M194 176 Q200 168 206 176 Q200 184 194 176Z" fill="rgba(56,168,112,.82)"/>
+          <text x="200" y="198" text-anchor="middle" fill="rgba(194,238,210,.82)" font-size="6.5" font-family="serif" letter-spacing="2">BLOOM</text>
+          <text x="200" y="208" text-anchor="middle" fill="rgba(24,104,80,.65)" font-size="4" font-family="monospace" letter-spacing="1">SUPER GREENS</text>
+          <!-- shadow -->
+          <ellipse cx="200" cy="252" rx="52" ry="10" fill="rgba(24,104,80,.14)"/>
+        </svg>
+      </div>
+      <div class="ugc-ov">
+        <span class="ugc-tag">Wellness · F&amp;B</span>
+        <div class="ugc-name">Bloom Greens — Day in My Life</div>
+        <div class="ugc-meta">3.3M views · @cleanlife.daily</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="band"></div>
+
+<!-- ═══ AI CAMPAIGNS ═══ -->
+<section id="ai-campaigns">
+  <div class="s-head rv"><span class="s-num">02</span><h2 class="s-title">AI Ad <em>Campaigns</em></h2><div class="s-div"></div></div>
+  <div class="camp-grid">
+    <!-- C1 -->
+    <div class="camp-card rv d1">
+      <div class="camp-lbl">Case Study · 2024</div><h3 class="camp-name">Nocturne by Lumière</h3>
+      <p class="camp-desc">Full AI-generated luxury fragrance campaign using Midjourney + Runway for visual identity, GPT-4 crafting multilingual copy across 12 markets. 340% ROAS on premium platforms.</p>
+      <div class="ba">
+        <div class="ba-p"><span class="ba-lbl">Before · Concept</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="124" fill="#151008"/><rect x="82" y="16" width="56" height="92" rx="5" fill="none" stroke="rgba(148,136,108,.38)" stroke-width="1.4" stroke-dasharray="4,3"/><rect x="90" y="10" width="40" height="10" rx="2" fill="none" stroke="rgba(148,136,108,.28)" stroke-width="1" stroke-dasharray="3,3"/><rect x="94" y="4" width="32" height="8" rx="2" fill="none" stroke="rgba(148,136,108,.22)" stroke-width="1" stroke-dasharray="3,3"/><line x1="35" y1="62" x2="78" y2="62" stroke="rgba(148,136,108,.18)" stroke-width=".8" stroke-dasharray="5,4"/><line x1="142" y1="62" x2="188" y2="62" stroke="rgba(148,136,108,.18)" stroke-width=".8" stroke-dasharray="5,4"/><text x="110" y="115" text-anchor="middle" fill="rgba(148,136,108,.38)" font-size="5" font-family="monospace" letter-spacing="2">DRAFT</text></svg>
+        </div>
+        <div class="ba-p"><span class="ba-lbl">After · AI Output</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c1a" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#382400" stop-opacity=".9"/><stop offset="100%" stop-color="#0c0700" stop-opacity="1"/></radialGradient></defs><rect width="220" height="124" fill="url(#c1a)"/><rect x="76" y="12" width="68" height="100" rx="9" fill="rgba(200,168,74,.2)" stroke="rgba(200,168,74,.55)" stroke-width="1"/><rect x="80" y="15" width="11" height="92" rx="3.5" fill="rgba(255,255,255,.12)"/><rect x="80" y="55" width="60" height="38" rx="1.5" fill="rgba(0,0,0,.45)"/><text x="110" y="73" text-anchor="middle" fill="rgba(200,168,74,.92)" font-size="5.5" font-family="serif" letter-spacing="2" font-style="italic">NOCTURNE</text><text x="110" y="84" text-anchor="middle" fill="rgba(244,234,198,.48)" font-size="3.5" font-family="serif" letter-spacing="1.5">BY LUMIÈRE</text><rect x="82" y="6" width="56" height="10" rx="3.5" fill="rgba(200,168,74,.28)" stroke="rgba(200,168,74,.42)" stroke-width=".7"/><rect x="88" y="1" width="44" height="7" rx="2.5" fill="rgba(200,168,74,.38)"/><ellipse cx="110" cy="112" rx="42" ry="8" fill="rgba(200,168,74,.1)"/><circle cx="52" cy="38" r="1.5" fill="rgba(200,168,74,.62)"/><circle cx="172" cy="28" r="1" fill="rgba(200,168,74,.52)"/></svg>
+        </div>
+      </div>
+      <div class="tools"><span class="tbadge">Midjourney v6</span><span class="tbadge">Runway Gen-3</span><span class="tbadge">GPT-4o</span><span class="tbadge">Adobe Firefly</span></div>
+    </div>
+    <!-- C2 -->
+    <div class="camp-card rv d2">
+      <div class="camp-lbl">Case Study · 2024</div><h3 class="camp-name">GRND — Urban Pulse</h3>
+      <p class="camp-desc">Streetwear brand repositioning using AI character generation and dynamic ad copy. Full social suite across Meta, TikTok, and Pinterest with geo-targeted variants. 5.2x engagement lift.</p>
+      <div class="ba">
+        <div class="ba-p"><span class="ba-lbl">Before · Brief</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="124" fill="#080a12"/><rect x="12" y="12" width="98" height="100" rx="2" fill="rgba(36,54,96,.3)" stroke="rgba(32,80,160,.18)" stroke-width=".8" stroke-dasharray="3,3"/><rect x="118" y="12" width="90" height="44" rx="2" fill="rgba(36,54,96,.2)" stroke="rgba(32,80,160,.14)" stroke-width=".8" stroke-dasharray="3,3"/><rect x="118" y="64" width="90" height="48" rx="2" fill="rgba(36,54,96,.15)" stroke="rgba(32,80,160,.1)" stroke-width=".8" stroke-dasharray="3,3"/><rect x="20" y="20" width="52" height="4" rx="1" fill="rgba(32,80,160,.3)"/><rect x="20" y="28" width="72" height="2" rx="1" fill="rgba(32,80,160,.2)"/><rect x="20" y="34" width="62" height="2" rx="1" fill="rgba(32,80,160,.15)"/><text x="110" y="116" text-anchor="middle" fill="rgba(32,80,160,.28)" font-size="5" font-family="monospace" letter-spacing="2">BRIEF</text></svg>
+        </div>
+        <div class="ba-p"><span class="ba-lbl">After · Campaign</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="124" fill="#050810"/><rect width="220" height="124" fill="rgba(32,80,160,.08)"/><path d="M28 98 Q78 76 130 72 L187 70 Q207 72 212 84 L214 97 Q210 104 200 105 L33 105 Q24 103 28 98 Z" fill="rgba(32,80,160,.42)" stroke="rgba(32,80,160,.82)" stroke-width="1"/><path d="M140 72 L132 52 L153 50 L162 72" fill="rgba(32,80,160,.3)" stroke="rgba(32,80,160,.5)" stroke-width=".8"/><path d="M156 80 Q172 76 188 78 Q176 84 156 80Z" fill="rgba(32,80,160,.72)"/><path d="M28 102 Q120 114 214 102 L214 107 Q120 120 28 107 Z" fill="rgba(18,54,114,.6)"/><text x="110" y="119" text-anchor="middle" fill="rgba(32,80,160,.58)" font-size="5" font-family="monospace" letter-spacing="3">VELOCITY</text><line x1="4" y1="90" x2="24" y2="90" stroke="rgba(32,80,160,.5)" stroke-width=".8" stroke-dasharray="4,3"/></svg>
+        </div>
+      </div>
+      <div class="tools"><span class="tbadge">DALL-E 3</span><span class="tbadge">Pika Labs</span><span class="tbadge">Claude Sonnet</span><span class="tbadge">Stable Diffusion</span></div>
+    </div>
+    <!-- C3 -->
+    <div class="camp-card rv d1">
+      <div class="camp-lbl">Case Study · 2025</div><h3 class="camp-name">BLOOM Wellness Rebrand</h3>
+      <p class="camp-desc">Complete brand identity overhaul leveraging AI for packaging mockups, color psychology analysis, and influencer-style video generation. Launched across 8 EU markets simultaneously.</p>
+      <div class="ba">
+        <div class="ba-p"><span class="ba-lbl">Old Brand</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="124" fill="#050d06"/><circle cx="110" cy="62" r="40" fill="rgba(24,104,80,.14)" stroke="rgba(24,104,80,.24)" stroke-width="1.4" stroke-dasharray="5,4"/><text x="110" y="70" text-anchor="middle" fill="rgba(24,104,80,.38)" font-size="24" font-family="serif" font-weight="bold">B</text><text x="110" y="108" text-anchor="middle" fill="rgba(24,104,80,.24)" font-size="5" font-family="monospace" letter-spacing="2">OLD IDENTITY</text></svg>
+        </div>
+        <div class="ba-p"><span class="ba-lbl">New Identity</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="124" fill="#030c04"/><circle cx="110" cy="56" r="46" fill="rgba(24,104,80,.2)" stroke="rgba(56,168,112,.62)" stroke-width="1.5"/><circle cx="110" cy="56" r="33" fill="rgba(24,104,80,.25)" stroke="rgba(56,168,112,.38)" stroke-width=".8"/><path d="M96 56 Q110 38 124 56 Q110 74 96 56Z" fill="rgba(56,168,112,.76)"/><path d="M96 56 Q110 38 124 56" fill="none" stroke="rgba(96,220,152,.48)" stroke-width="1"/><text x="110" y="115" text-anchor="middle" fill="rgba(56,168,112,.72)" font-size="6.5" font-family="serif" letter-spacing="3">BLOOM</text><circle cx="68" cy="28" r="2" fill="rgba(56,168,112,.52)"/><circle cx="154" cy="24" r="1.5" fill="rgba(56,168,112,.42)"/></svg>
+        </div>
+      </div>
+      <div class="tools"><span class="tbadge">Ideogram 2.0</span><span class="tbadge">Kling AI</span><span class="tbadge">Sora</span></div>
+    </div>
+    <!-- C4 -->
+    <div class="camp-card rv d2">
+      <div class="camp-lbl">Case Study · 2025</div><h3 class="camp-name">Chrono I — Launch Sprint</h3>
+      <p class="camp-desc">48-hour AI-accelerated creative sprint for a watch brand launch. Generated 120+ ad variants, A/B tested 40 angles, deployed winning creative in under 72 hours. $2.1M revenue in week one.</p>
+      <div class="ba">
+        <div class="ba-p"><span class="ba-lbl">Day 1 · Draft</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><rect width="220" height="124" fill="#070910"/><circle cx="110" cy="62" r="42" fill="none" stroke="rgba(152,152,168,.28)" stroke-width="1.4" stroke-dasharray="5,4"/><circle cx="110" cy="62" r="31" fill="rgba(18,22,38,.5)"/><line x1="110" y1="62" x2="110" y2="28" stroke="rgba(152,152,168,.48)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3,2"/><line x1="110" y1="62" x2="134" y2="62" stroke="rgba(112,112,132,.48)" stroke-width="1" stroke-linecap="round" stroke-dasharray="3,2"/><text x="110" y="111" text-anchor="middle" fill="rgba(112,112,132,.38)" font-size="5" font-family="monospace" letter-spacing="2">ROUGH CONCEPT</text></svg>
+        </div>
+        <div class="ba-p"><span class="ba-lbl">Day 3 · Live</span>
+          <svg width="100%" height="100%" viewBox="0 0 220 124" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="c4r" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#181208" stop-opacity=".8"/><stop offset="100%" stop-color="#08091a" stop-opacity="1"/></radialGradient></defs><rect width="220" height="124" fill="url(#c4r)"/><circle cx="110" cy="58" r="46" fill="rgba(92,92,102,.4)" stroke="rgba(152,152,162,.62)" stroke-width="1.5"/><circle cx="110" cy="58" r="38" fill="rgba(10,12,20,.9)"/><circle cx="110" cy="58" r="42" fill="none" stroke="rgba(200,168,74,.3)" stroke-width=".8"/><rect x="108.5" y="24" width="3" height="10" rx="1" fill="rgba(244,238,224,.85)"/><rect x="108.5" y="82" width="3" height="10" rx="1" fill="rgba(244,238,224,.48)"/><rect x="76" y="56.5" width="10" height="3" rx="1" fill="rgba(244,238,224,.48)"/><rect x="134" y="56.5" width="10" height="3" rx="1" fill="rgba(244,238,224,.48)"/><line x1="110" y1="58" x2="110" y2="28" stroke="rgba(244,238,224,.88)" stroke-width="2.2" stroke-linecap="round"/><line x1="110" y1="58" x2="136" y2="58" stroke="rgba(200,168,74,.9)" stroke-width="1.6" stroke-linecap="round"/><line x1="110" y1="58" x2="103" y2="76" stroke="rgba(184,52,40,.82)" stroke-width="1.1" stroke-linecap="round"/><circle cx="110" cy="58" r="3.5" fill="rgba(92,92,102,.8)"/><circle cx="110" cy="58" r="1.8" fill="rgba(200,168,74,1)"/><text x="110" y="110" text-anchor="middle" fill="rgba(200,168,74,.55)" font-size="5" font-family="serif" letter-spacing="2.5">CHRONO I</text></svg>
+        </div>
+      </div>
+      <div class="tools"><span class="tbadge">Midjourney v6.1</span><span class="tbadge">Haiper 2.0</span><span class="tbadge">GPT-4o</span></div>
+    </div>
+  </div>
+</section>
+<div class="band"></div>
+
+<!-- ═══ AI COMMERCIALS ═══ -->
+<section id="ai-commercials">
+  <div class="s-head rv"><span class="s-num">03</span><h2 class="s-title">AI <em>Commercial</em> Ads</h2><div class="s-div"></div></div>
+  <div class="comm-row">
+
+    <!-- C1 EV Car -->
+    <div class="comm-card rv d1">
+      <div class="comm-art">
+        <svg width="100%" height="100%" viewBox="0 0 300 530" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ev1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#05030d"/><stop offset="100%" stop-color="#0e0720"/></linearGradient>
+            <radialGradient id="ev1gl" cx="50%" cy="62%" r="55%"><stop offset="0%" stop-color="#6030c0" stop-opacity=".38"/><stop offset="100%" stop-color="#05030d" stop-opacity="0"/></radialGradient>
+            <linearGradient id="ev1car" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#242238"/><stop offset="100%" stop-color="#121028"/></linearGradient>
+            <filter id="evgl"><feGaussianBlur stdDeviation="7"/></filter>
+          </defs>
+          <rect width="300" height="530" fill="url(#ev1bg)"/>
+          <rect width="300" height="530" fill="url(#ev1gl)"/>
+          <!-- Stars -->
+          <circle cx="38" cy="55" r="1" fill="white" opacity=".38"/><circle cx="88" cy="28" r=".8" fill="white" opacity=".28"/><circle cx="202" cy="48" r="1.2" fill="white" opacity=".33"/><circle cx="262" cy="76" r=".8" fill="white" opacity=".24"/><circle cx="148" cy="18" r="1" fill="white" opacity=".28"/><circle cx="272" cy="38" r="1.1" fill="white" opacity=".28"/>
+          <!-- Road -->
+          <rect x="0" y="378" width="300" height="152" fill="rgba(8,6,18,.94)"/>
+          <line x1="150" y1="390" x2="150" y2="530" stroke="rgba(96,48,192,.18)" stroke-width="2.5" stroke-dasharray="22,18"/>
+          <!-- Ground glow -->
+          <ellipse cx="150" cy="386" rx="138" ry="18" fill="rgba(96,48,192,.22)" filter="url(#evgl)"/>
+          <!-- Car body -->
+          <path d="M28 338 Q54 286 112 270 L186 265 Q238 267 260 292 L270 332 Q264 352 250 355 L40 355 Q24 352 28 338 Z" fill="url(#ev1car)" stroke="rgba(96,48,192,.65)" stroke-width="1.2"/>
+          <!-- windshield -->
+          <path d="M112 270 Q102 255 114 244 L180 242 Q193 244 190 265" fill="rgba(96,48,192,.16)" stroke="rgba(96,48,192,.32)" stroke-width=".8"/>
+          <!-- rear glass -->
+          <path d="M186 265 Q198 252 212 254 L230 265" fill="rgba(96,48,192,.1)" stroke="rgba(96,48,192,.22)" stroke-width=".7"/>
+          <!-- Headlight glow -->
+          <ellipse cx="50" cy="336" rx="22" ry="9" fill="rgba(140,110,255,.18)"/>
+          <ellipse cx="50" cy="336" rx="12" ry="5" fill="rgba(170,150,255,.62)" filter="url(#evgl)"/>
+          <!-- Tail lights -->
+          <path d="M256 296 L264 318" stroke="rgba(255,50,50,.72)" stroke-width="4.5" stroke-linecap="round"/>
+          <!-- Wheels -->
+          <circle cx="80" cy="356" r="27" fill="rgba(7,5,16,1)" stroke="rgba(96,48,192,.52)" stroke-width="1.5"/>
+          <circle cx="80" cy="356" r="17" fill="none" stroke="rgba(96,48,192,.3)" stroke-width="1"/>
+          <circle cx="80" cy="356" r="7" fill="rgba(28,18,58,.85)"/>
+          <circle cx="208" cy="356" r="27" fill="rgba(7,5,16,1)" stroke="rgba(96,48,192,.52)" stroke-width="1.5"/>
+          <circle cx="208" cy="356" r="17" fill="none" stroke="rgba(96,48,192,.3)" stroke-width="1"/>
+          <circle cx="208" cy="356" r="7" fill="rgba(28,18,58,.85)"/>
+          <!-- Brand -->
+          <text x="150" y="458" text-anchor="middle" fill="rgba(96,48,192,.52)" font-size="10.5" font-family="monospace" letter-spacing="6">VOLT EV</text>
+          <text x="150" y="476" text-anchor="middle" fill="rgba(140,110,255,.28)" font-size="5.5" font-family="monospace" letter-spacing="4">THE SILENT REVOLUTION</text>
+          <!-- ghost text top -->
+          <text x="150" y="48" text-anchor="middle" fill="rgba(96,48,192,.06)" font-size="52" font-family="serif" font-weight="300" letter-spacing="-2">EV</text>
+        </svg>
+      </div>
+      <div class="play-btn"><div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="rgba(244,238,228,.86)"/></svg></div></div>
+      <div class="ai-badge">AI · Cinematic</div>
+      <div class="comm-info" style="background:linear-gradient(to top,rgba(5,3,13,.97) 0%,transparent 100%);">
+        <div class="comm-client">Volt Electric · EV Brand</div>
+        <div class="comm-title">The Silent Revolution</div>
+        <div class="comm-dur">00:60 · Sora + Runway · 4K</div>
+      </div>
+    </div>
+
+    <!-- C2 Whisky -->
+    <div class="comm-card rv d2">
+      <div class="comm-art">
+        <svg width="100%" height="100%" viewBox="0 0 300 530" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="wh1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0d0502"/><stop offset="100%" stop-color="#1a0904"/></linearGradient>
+            <radialGradient id="wh1gl" cx="50%" cy="38%" r="50%"><stop offset="0%" stop-color="#b07020" stop-opacity=".24"/><stop offset="100%" stop-color="#0d0502" stop-opacity="0"/></radialGradient>
+            <linearGradient id="wh1bot" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#381c06"/><stop offset="25%" stop-color="#785018"/><stop offset="50%" stop-color="#985e1e"/><stop offset="75%" stop-color="#683a10"/><stop offset="100%" stop-color="#381c06"/></linearGradient>
+            <linearGradient id="wh1liq" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#c87020"/><stop offset="100%" stop-color="#784408"/></linearGradient>
+            <filter id="whgl"><feGaussianBlur stdDeviation="9"/></filter>
+          </defs>
+          <rect width="300" height="530" fill="url(#wh1bg)"/>
+          <rect width="300" height="530" fill="url(#wh1gl)"/>
+          <!-- smoke wisps -->
+          <ellipse cx="98" cy="148" rx="52" ry="16" fill="rgba(176,112,32,.05)" transform="rotate(-16 98 148)"/>
+          <ellipse cx="198" cy="178" rx="42" ry="13" fill="rgba(176,112,32,.04)" transform="rotate(22 198 178)"/>
+          <!-- base glow -->
+          <ellipse cx="150" cy="452" rx="68" ry="19" fill="rgba(176,112,32,.22)" filter="url(#whgl)"/>
+          <!-- Bottle -->
+          <path d="M114 138 L107 420 L193 420 L186 138 Z" fill="url(#wh1bot)"/>
+          <!-- shine -->
+          <path d="M118 140 L112 418 L122 418 L128 140 Z" fill="rgba(255,255,255,.13)"/>
+          <path d="M128 140 L124 418 L129 418 L133 140 Z" fill="rgba(255,255,255,.055)"/>
+          <!-- Liquid -->
+          <path d="M108 298 L107 418 L193 418 L192 298 Z" fill="url(#wh1liq)" opacity=".62"/>
+          <path d="M108 298 Q150 292 192 298" fill="rgba(196,134,54,.3)"/>
+          <!-- Label -->
+          <rect x="114" y="278" width="72" height="102" rx="3" fill="rgba(18,8,2,.72)" stroke="rgba(176,112,32,.35)" stroke-width=".8"/>
+          <rect x="118" y="282" width="64" height="94" rx="2" fill="none" stroke="rgba(176,112,32,.2)" stroke-width=".5"/>
+          <text x="150" y="308" text-anchor="middle" fill="rgba(244,218,174,.92)" font-size="7.5" font-family="serif" font-style="italic" letter-spacing="2">Obsidian</text>
+          <text x="150" y="319" text-anchor="middle" fill="rgba(244,218,174,.86)" font-size="7" font-family="serif" letter-spacing="1.5">RESERVE</text>
+          <line x1="122" y1="324" x2="178" y2="324" stroke="rgba(176,112,32,.52)" stroke-width=".6"/>
+          <text x="150" y="338" text-anchor="middle" fill="rgba(176,112,32,.78)" font-size="10" font-family="serif" letter-spacing="1">12</text>
+          <text x="150" y="349" text-anchor="middle" fill="rgba(244,218,174,.48)" font-size="4.5" font-family="serif" letter-spacing="2">YEAR AGED</text>
+          <text x="150" y="361" text-anchor="middle" fill="rgba(244,218,174,.28)" font-size="4" font-family="monospace" letter-spacing="1">SINGLE MALT · 46%</text>
+          <!-- Neck -->
+          <rect x="130" y="98" width="40" height="44" rx="4" fill="url(#wh1bot)"/>
+          <rect x="133" y="101" width="6" height="36" rx="2" fill="rgba(255,255,255,.1)"/>
+          <!-- Cap -->
+          <rect x="124" y="62" width="52" height="40" rx="7" fill="#221006"/>
+          <rect x="128" y="65" width="9" height="30" rx="3" fill="rgba(255,255,255,.08)"/>
+          <rect x="124" y="62" width="52" height="9" rx="5" fill="rgba(90,52,18,.82)"/>
+          <!-- brand below -->
+          <text x="150" y="488" text-anchor="middle" fill="rgba(176,112,32,.38)" font-size="7" font-family="monospace" letter-spacing="4">OBSIDIAN</text>
+        </svg>
+      </div>
+      <div class="play-btn"><div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="rgba(244,238,228,.86)"/></svg></div></div>
+      <div class="ai-badge">AI · Luxury</div>
+      <div class="comm-info" style="background:linear-gradient(to top,rgba(13,5,2,.97) 0%,transparent 100%);">
+        <div class="comm-client">Obsidian Reserve · Spirits</div>
+        <div class="comm-title">Twelve Years of Silence</div>
+        <div class="comm-dur">00:30 · Kling AI + Firefly · 4K</div>
+      </div>
+    </div>
+
+    <!-- C3 Running Shoe -->
+    <div class="comm-card rv d3">
+      <div class="comm-art">
+        <svg width="100%" height="100%" viewBox="0 0 300 530" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="rs1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#020805"/><stop offset="100%" stop-color="#04120a"/></linearGradient>
+            <radialGradient id="rs1gl" cx="50%" cy="56%" r="54%"><stop offset="0%" stop-color="#186850" stop-opacity=".3"/><stop offset="100%" stop-color="#020805" stop-opacity="0"/></radialGradient>
+            <linearGradient id="rs1up" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e0eae0"/><stop offset="100%" stop-color="#98a898"/></linearGradient>
+            <linearGradient id="rs1sl" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#36b270"/><stop offset="100%" stop-color="#1c6840"/></linearGradient>
+            <filter id="rsgl"><feGaussianBlur stdDeviation="8"/></filter>
+          </defs>
+          <rect width="300" height="530" fill="url(#rs1bg)"/>
+          <rect width="300" height="530" fill="url(#rs1gl)"/>
+          <!-- Track -->
+          <rect x="0" y="362" width="300" height="168" fill="rgba(8,22,10,.95)"/>
+          <line x1="0" y1="382" x2="300" y2="382" stroke="rgba(24,104,80,.2)" stroke-width="1.4"/>
+          <!-- Ground glow -->
+          <ellipse cx="150" cy="370" rx="122" ry="18" fill="rgba(24,104,80,.2)" filter="url(#rsgl)"/>
+          <!-- motion blur -->
+          <line x1="0" y1="308" x2="48" y2="308" stroke="rgba(24,104,80,.42)" stroke-width="1.6" stroke-dasharray="6,4"/>
+          <line x1="0" y1="320" x2="40" y2="320" stroke="rgba(24,104,80,.28)" stroke-width="1.2" stroke-dasharray="5,5"/>
+          <line x1="0" y1="332" x2="46" y2="332" stroke="rgba(24,104,80,.18)" stroke-width=".9" stroke-dasharray="4,6"/>
+          <line x1="0" y1="344" x2="36" y2="344" stroke="rgba(24,104,80,.12)" stroke-width=".7" stroke-dasharray="3,7"/>
+          <!-- Sole -->
+          <path d="M38 352 Q150 370 256 352 L259 364 Q150 383 35 364 Z" fill="url(#rs1sl)"/>
+          <!-- Upper -->
+          <path d="M42 350 Q68 302 142 286 L214 282 Q252 285 265 308 L268 344 Q262 356 248 358 L48 358 Q36 356 42 350 Z" fill="url(#rs1up)"/>
+          <!-- mesh -->
+          <path d="M118 288 L100 356" stroke="rgba(24,104,80,.18)" stroke-width=".9"/>
+          <path d="M148 284 L140 356" stroke="rgba(24,104,80,.18)" stroke-width=".9"/>
+          <path d="M178 283 L180 356" stroke="rgba(24,104,80,.15)" stroke-width=".9"/>
+          <path d="M208 284 L214 356" stroke="rgba(24,104,80,.12)" stroke-width=".9"/>
+          <!-- Tongue -->
+          <path d="M142 286 L130 254 L155 252 L166 286" fill="rgba(222,235,222,.96)"/>
+          <!-- Accent stripe -->
+          <path d="M190 312 Q223 301 255 306 Q232 318 190 312Z" fill="rgba(24,104,80,.76)"/>
+          <!-- Laces -->
+          <path d="M150 292 Q173 287 197 290" fill="none" stroke="rgba(244,244,234,.72)" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M148 303 Q173 298 198 301" fill="none" stroke="rgba(244,244,234,.55)" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M146 314 Q173 309 200 313" fill="none" stroke="rgba(244,244,234,.4)" stroke-width="1.4" stroke-linecap="round"/>
+          <!-- brand -->
+          <text x="150" y="432" text-anchor="middle" fill="rgba(24,104,80,.52)" font-size="9.5" font-family="monospace" letter-spacing="6">STRIDE</text>
+          <text x="150" y="450" text-anchor="middle" fill="rgba(24,104,80,.3)" font-size="5.5" font-family="monospace" letter-spacing="3">ENGINEERED FOR TOMORROW</text>
+          <!-- ghost top -->
+          <text x="150" y="62" text-anchor="middle" fill="rgba(24,104,80,.07)" font-size="72" font-family="serif" font-weight="300">AI</text>
+        </svg>
+      </div>
+      <div class="play-btn"><div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M1 1l12 7-12 7V1z" fill="rgba(244,238,228,.86)"/></svg></div></div>
+      <div class="ai-badge">AI · Sport</div>
+      <div class="comm-info" style="background:linear-gradient(to top,rgba(2,8,5,.97) 0%,transparent 100%);">
+        <div class="comm-client">StrideAI · Performance</div>
+        <div class="comm-title">Engineered for Tomorrow</div>
+        <div class="comm-dur">00:45 · Sora + Haiper · 4K UHD</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="band"></div>
+
+<!-- ═══ GRAPHIC DESIGN ═══ -->
+<section id="graphic-design">
+  <div class="s-head rv"><span class="s-num">04</span><h2 class="s-title">Graphic <em>Design</em></h2><div class="s-div"></div></div>
+  <div class="design-grid">
+
+    <!-- D1 large luxury poster -->
+    <div class="di">
+      <div class="di-inner">
+        <svg width="100%" height="100%" viewBox="0 0 480 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="d1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#181006"/><stop offset="100%" stop-color="#221808"/></linearGradient><radialGradient id="d1gl" cx="50%" cy="50%" r="58%"><stop offset="0%" stop-color="#c8a84a" stop-opacity=".13"/><stop offset="100%" stop-color="#181006" stop-opacity="0"/></radialGradient></defs>
+          <rect width="480" height="380" fill="url(#d1bg)"/>
+          <rect width="480" height="380" fill="url(#d1gl)"/>
+          <rect x="16" y="16" width="448" height="348" fill="none" stroke="rgba(200,168,74,.35)" stroke-width="1"/>
+          <rect x="22" y="22" width="436" height="336" fill="none" stroke="rgba(200,168,74,.1)" stroke-width=".5"/>
+          <path d="M16 16 L50 16 M16 16 L16 50" stroke="rgba(200,168,74,.72)" stroke-width="2" fill="none"/>
+          <path d="M464 16 L430 16 M464 16 L464 50" stroke="rgba(200,168,74,.72)" stroke-width="2" fill="none"/>
+          <path d="M16 364 L50 364 M16 364 L16 330" stroke="rgba(200,168,74,.72)" stroke-width="2" fill="none"/>
+          <path d="M464 364 L430 364 M464 364 L464 330" stroke="rgba(200,168,74,.72)" stroke-width="2" fill="none"/>
+          <text x="240" y="88" text-anchor="middle" fill="rgba(200,168,74,.95)" font-size="52" font-family="serif" font-weight="300" letter-spacing="10">LUMIÈRE</text>
+          <line x1="70" y1="104" x2="410" y2="104" stroke="rgba(200,168,74,.35)" stroke-width=".7"/>
+          <text x="240" y="124" text-anchor="middle" fill="rgba(244,234,198,.32)" font-size="7.5" font-family="monospace" letter-spacing="7">PARIS · MILAN · NEW YORK</text>
+          <!-- Mandala -->
+          <circle cx="240" cy="232" r="92" fill="none" stroke="rgba(200,168,74,.1)" stroke-width="1"/>
+          <circle cx="240" cy="232" r="70" fill="none" stroke="rgba(200,168,74,.18)" stroke-width=".9"/>
+          <circle cx="240" cy="232" r="46" fill="none" stroke="rgba(200,168,74,.14)" stroke-width=".7"/>
+          <circle cx="240" cy="232" r="24" fill="rgba(200,168,74,.06)"/>
+          <path d="M240 142 Q258 186 240 232 Q222 186 240 142Z" fill="rgba(200,168,74,.15)"/>
+          <path d="M240 322 Q258 278 240 232 Q222 278 240 322Z" fill="rgba(200,168,74,.15)"/>
+          <path d="M150 232 Q194 214 240 232 Q194 250 150 232Z" fill="rgba(200,168,74,.12)"/>
+          <path d="M330 232 Q286 214 240 232 Q286 250 330 232Z" fill="rgba(200,168,74,.12)"/>
+          <path d="M175 167 Q218 190 240 232 Q200 204 175 167Z" fill="rgba(200,168,74,.09)"/>
+          <path d="M305 167 Q262 190 240 232 Q280 204 305 167Z" fill="rgba(200,168,74,.09)"/>
+          <path d="M175 297 Q218 274 240 232 Q200 260 175 297Z" fill="rgba(200,168,74,.09)"/>
+          <path d="M305 297 Q262 274 240 232 Q280 260 305 297Z" fill="rgba(200,168,74,.09)"/>
+          <text x="240" y="355" text-anchor="middle" fill="rgba(200,168,74,.38)" font-size="6.5" font-family="monospace" letter-spacing="5">COLLECTION 2025</text>
+        </svg>
+      </div>
+      <div class="di-ov"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="19" y1="19" x2="26" y2="26" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.5"/></svg><span>Luxury Poster · Lumière</span></div>
+    </div>
+
+    <!-- D2 Brand mark -->
+    <div class="di">
+      <div class="di-inner">
+        <svg width="100%" height="100%" viewBox="0 0 240 190" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="190" fill="#060810"/>
+          <polygon points="120,33 150,50 150,85 120,102 90,85 90,50" fill="rgba(32,80,160,.12)" stroke="rgba(32,80,160,.72)" stroke-width="1.5"/>
+          <polygon points="120,46 142,59 142,82 120,95 98,82 98,59" fill="rgba(32,80,160,.08)" stroke="rgba(32,80,160,.4)" stroke-width=".8"/>
+          <polygon points="120,33 150,50 150,85 120,102 90,85 90,50" fill="none" stroke="rgba(32,80,160,.18)" stroke-width="7"/>
+          <text x="120" y="76" text-anchor="middle" fill="rgba(32,80,160,.92)" font-size="15" font-family="monospace" font-weight="bold">A</text>
+          <text x="120" y="124" text-anchor="middle" fill="rgba(244,244,255,.7)" font-size="10.5" font-family="monospace" letter-spacing="5">APEX</text>
+          <line x1="58" y1="132" x2="182" y2="132" stroke="rgba(32,80,160,.3)" stroke-width=".7"/>
+          <text x="120" y="146" text-anchor="middle" fill="rgba(32,80,160,.5)" font-size="5.5" font-family="monospace" letter-spacing="3">CREATIVE AGENCY</text>
+          <circle cx="18" cy="18" r="2" fill="rgba(32,80,160,.38)"/><circle cx="222" cy="18" r="2" fill="rgba(32,80,160,.38)"/><circle cx="18" cy="172" r="2" fill="rgba(32,80,160,.38)"/><circle cx="222" cy="172" r="2" fill="rgba(32,80,160,.38)"/>
+          <text x="120" y="176" text-anchor="middle" fill="rgba(32,80,160,.24)" font-size="5" font-family="monospace" letter-spacing="2">EST. 2024</text>
+        </svg>
+      </div>
+      <div class="di-ov"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="19" y1="19" x2="26" y2="26" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.5"/></svg><span>Brand Identity · Apex</span></div>
+    </div>
+
+    <!-- D3 Label -->
+    <div class="di">
+      <div class="di-inner">
+        <svg width="100%" height="100%" viewBox="0 0 240 190" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="190" fill="#110507"/>
+          <rect x="12" y="12" width="216" height="166" fill="none" stroke="rgba(184,52,40,.18)" stroke-width=".8"/>
+          <path d="M12 12 L32 12 M12 12 L12 32" stroke="rgba(184,52,40,.52)" stroke-width="1.2" fill="none"/>
+          <path d="M228 12 L208 12 M228 12 L228 32" stroke="rgba(184,52,40,.52)" stroke-width="1.2" fill="none"/>
+          <path d="M12 178 L32 178 M12 178 L12 158" stroke="rgba(184,52,40,.52)" stroke-width="1.2" fill="none"/>
+          <path d="M228 178 L208 178 M228 178 L228 158" stroke="rgba(184,52,40,.52)" stroke-width="1.2" fill="none"/>
+          <text x="120" y="92" text-anchor="middle" fill="rgba(184,52,40,.86)" font-size="66" font-family="serif" font-style="italic" font-weight="300">R</text>
+          <line x1="28" y1="105" x2="212" y2="105" stroke="rgba(184,52,40,.4)" stroke-width=".8"/>
+          <text x="120" y="124" text-anchor="middle" fill="rgba(244,228,225,.65)" font-size="12.5" font-family="serif" letter-spacing="10">ROUGE</text>
+          <line x1="54" y1="130" x2="186" y2="130" stroke="rgba(184,52,40,.2)" stroke-width=".5"/>
+          <text x="120" y="144" text-anchor="middle" fill="rgba(184,52,40,.5)" font-size="5.5" font-family="monospace" letter-spacing="3">N° 07 · VELOUR COLLECTION</text>
+          <text x="120" y="158" text-anchor="middle" fill="rgba(244,228,225,.2)" font-size="5" font-family="monospace" letter-spacing="2">EST. MMXXIV · PARIS</text>
+        </svg>
+      </div>
+      <div class="di-ov"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="19" y1="19" x2="26" y2="26" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.5"/></svg><span>Label Design · Rouge</span></div>
+    </div>
+
+    <!-- D4 Packaging -->
+    <div class="di">
+      <div class="di-inner">
+        <svg width="100%" height="100%" viewBox="0 0 240 190" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="d4bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#030d05"/><stop offset="100%" stop-color="#071608"/></linearGradient><linearGradient id="d4t" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1c5838"/><stop offset="100%" stop-color="#0c2e18"/></linearGradient><linearGradient id="d4r" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#144e30"/><stop offset="100%" stop-color="#082618"/></linearGradient><linearGradient id="d4l" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#103c24"/><stop offset="100%" stop-color="#062010"/></linearGradient></defs>
+          <rect width="240" height="190" fill="url(#d4bg)"/>
+          <!-- Isometric box -->
+          <path d="M120 34 L182 60 L120 86 L58 60 Z" fill="rgba(28,88,56,.82)" stroke="rgba(56,168,112,.42)" stroke-width=".8"/>
+          <path d="M182 60 L182 130 L120 156 L120 86 Z" fill="url(#d4r)" stroke="rgba(56,168,112,.32)" stroke-width=".8"/>
+          <path d="M58 60 L58 130 L120 156 L120 86 Z" fill="url(#d4l)" stroke="rgba(56,168,112,.26)" stroke-width=".8"/>
+          <!-- label on right -->
+          <path d="M150 91 L150 142 L120 156 L120 105 Z" fill="rgba(14,40,24,.52)"/>
+          <text x="136" y="130" text-anchor="middle" fill="rgba(56,168,112,.7)" font-size="6" font-family="serif" letter-spacing="1" transform="rotate(-30 136 130)">BLOOM</text>
+          <!-- leaf on top -->
+          <path d="M120 58 Q131 47 142 58 Q131 69 120 58Z" fill="rgba(56,168,112,.65)"/>
+          <line x1="120" y1="58" x2="131" y2="50" stroke="rgba(56,168,112,.4)" stroke-width=".7"/>
+          <ellipse cx="120" cy="162" rx="66" ry="12" fill="rgba(28,88,56,.22)"/>
+          <text x="120" y="180" text-anchor="middle" fill="rgba(56,168,112,.28)" font-size="5" font-family="monospace" letter-spacing="3">PACKAGING DESIGN</text>
+        </svg>
+      </div>
+      <div class="di-ov"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="19" y1="19" x2="26" y2="26" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.5"/></svg><span>Packaging · Bloom</span></div>
+    </div>
+
+    <!-- D5 Editorial -->
+    <div class="di">
+      <div class="di-inner">
+        <svg width="100%" height="100%" viewBox="0 0 240 190" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="240" height="190" fill="#0c0810"/>
+          <rect x="10" y="12" width="106" height="166" rx="1" fill="rgba(28,20,32,.62)" stroke="rgba(160,152,172,.15)" stroke-width=".7"/>
+          <rect x="14" y="16" width="98" height="92" rx="1" fill="rgba(48,28,56,.82)"/>
+          <text x="63" y="64" text-anchor="middle" fill="rgba(160,152,172,.12)" font-size="34" font-family="serif" font-style="italic">L</text>
+          <rect x="18" y="118" width="90" height="3" rx="1" fill="rgba(244,238,230,.35)"/>
+          <rect x="18" y="126" width="76" height="2" rx="1" fill="rgba(244,238,230,.18)"/>
+          <rect x="18" y="132" width="84" height="2" rx="1" fill="rgba(244,238,230,.14)"/>
+          <rect x="18" y="138" width="70" height="2" rx="1" fill="rgba(244,238,230,.12)"/>
+          <rect x="18" y="144" width="90" height="2" rx="1" fill="rgba(244,238,230,.1)"/>
+          <rect x="18" y="150" width="64" height="2" rx="1" fill="rgba(244,238,230,.1)"/>
+          <rect x="18" y="156" width="78" height="2" rx="1" fill="rgba(244,238,230,.1)"/>
+          <!-- Right page -->
+          <rect x="124" y="12" width="106" height="166" rx="1" fill="rgba(22,16,26,.62)" stroke="rgba(160,152,172,.15)" stroke-width=".7"/>
+          <text x="177" y="55" text-anchor="middle" fill="rgba(200,168,74,.55)" font-size="18" font-family="serif" font-weight="300" letter-spacing="3">AXIOM</text>
+          <line x1="134" y1="62" x2="220" y2="62" stroke="rgba(200,168,74,.25)" stroke-width=".5"/>
+          <text x="177" y="72" text-anchor="middle" fill="rgba(160,152,172,.28)" font-size="4.5" font-family="monospace" letter-spacing="2">ISSUE 08 · 2025</text>
+          <rect x="128" y="82" width="98" height="52" rx="1" fill="rgba(38,28,45,.72)"/>
+          <text x="177" y="110" text-anchor="middle" fill="rgba(160,152,172,.1)" font-size="30" font-family="serif" font-style="italic">V</text>
+          <rect x="128" y="140" width="46" height="32" rx="1" fill="rgba(200,168,74,.07)" stroke="rgba(200,168,74,.14)" stroke-width=".5"/>
+          <rect x="178" y="140" width="48" height="32" rx="1" fill="rgba(48,34,56,.52)"/>
+        </svg>
+      </div>
+      <div class="di-ov"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="19" y1="19" x2="26" y2="26" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.5"/></svg><span>Editorial Layout</span></div>
+    </div>
+
+    <!-- D6 large AI poster -->
+    <div class="di">
+      <div class="di-inner">
+        <svg width="100%" height="100%" viewBox="0 0 480 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="d6bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#030810"/><stop offset="100%" stop-color="#060e1e"/></linearGradient><radialGradient id="d6gl" cx="50%" cy="48%" r="55%"><stop offset="0%" stop-color="#2050a0" stop-opacity=".16"/><stop offset="100%" stop-color="#030810" stop-opacity="0"/></radialGradient></defs>
+          <rect width="480" height="380" fill="url(#d6bg)"/>
+          <rect width="480" height="380" fill="url(#d6gl)"/>
+          <!-- circuit paths -->
+          <path d="M48 278 L100 278 L100 308 L180 308 L180 338 L260 338 L260 308 L340 308 L340 278 L420 278" fill="none" stroke="rgba(32,80,160,.18)" stroke-width="1"/>
+          <path d="M48 298 L88 298 L88 328 L168 328" fill="none" stroke="rgba(32,80,160,.1)" stroke-width=".8"/>
+          <path d="M308 338 L308 358 L398 358 L398 318 L432 318" fill="none" stroke="rgba(32,80,160,.12)" stroke-width=".8"/>
+          <circle cx="100" cy="278" r="3" fill="rgba(32,80,160,.52)"/>
+          <circle cx="180" cy="308" r="3" fill="rgba(32,80,160,.52)"/>
+          <circle cx="260" cy="338" r="3" fill="rgba(32,80,160,.52)"/>
+          <circle cx="340" cy="278" r="3" fill="rgba(32,80,160,.52)"/>
+          <!-- ghost text -->
+          <text x="240" y="178" text-anchor="middle" fill="rgba(32,80,160,.055)" font-size="160" font-family="serif" font-weight="800" letter-spacing="-6">AI</text>
+          <!-- title -->
+          <text x="240" y="180" text-anchor="middle" fill="rgba(244,238,230,.89)" font-size="36" font-family="monospace" letter-spacing="14">FUTURE</text>
+          <line x1="62" y1="194" x2="418" y2="194" stroke="rgba(32,80,160,.36)" stroke-width=".8"/>
+          <text x="240" y="214" text-anchor="middle" fill="rgba(32,80,160,.66)" font-size="8.5" font-family="monospace" letter-spacing="8">CREATIVE INTELLIGENCE</text>
+          <text x="240" y="232" text-anchor="middle" fill="rgba(244,238,230,.16)" font-size="6" font-family="monospace" letter-spacing="5">TUSHAR SINGH · AXIOM STUDIO · 2025</text>
+          <rect x="60" y="45" width="360" height="314" fill="none" stroke="rgba(32,80,160,.08)" stroke-width=".7"/>
+          <circle cx="60" cy="45" r="1.5" fill="rgba(32,80,160,.38)"/><circle cx="420" cy="45" r="1.5" fill="rgba(32,80,160,.38)"/><circle cx="60" cy="359" r="1.5" fill="rgba(32,80,160,.38)"/><circle cx="420" cy="359" r="1.5" fill="rgba(32,80,160,.38)"/>
+        </svg>
+      </div>
+      <div class="di-ov"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="19" y1="19" x2="26" y2="26" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="1.5"/></svg><span>AI Future · Typographic Poster</span></div>
+    </div>
+  </div>
+</section>
+<div class="band"></div>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="rv">
+      <div class="portrait-box">
+        <svg width="100%" height="100%" viewBox="0 0 400 530" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="abg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#16100a"/><stop offset="100%" stop-color="#241a0c"/></linearGradient>
+            <radialGradient id="agl" cx="50%" cy="34%" r="52%"><stop offset="0%" stop-color="#c8a84a" stop-opacity=".1"/><stop offset="100%" stop-color="#16100a" stop-opacity="0"/></radialGradient>
+            <linearGradient id="askin" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c09070"/><stop offset="100%" stop-color="#a07050"/></linearGradient>
+            <linearGradient id="asuit" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a1810"/><stop offset="50%" stop-color="#2a2418"/><stop offset="100%" stop-color="#1a1810"/></linearGradient>
+          </defs>
+          <rect width="400" height="530" fill="url(#abg)"/>
+          <rect width="400" height="530" fill="url(#agl)"/>
+          <!-- subtle vertical lines -->
+          <line x1="133" y1="0" x2="133" y2="530" stroke="rgba(200,168,74,.025)" stroke-width="1"/>
+          <line x1="266" y1="0" x2="266" y2="530" stroke="rgba(200,168,74,.025)" stroke-width="1"/>
+          <!-- Body -->
+          <path d="M78 530 L78 342 Q88 312 130 296 L200 280 L270 296 Q312 312 322 342 L322 530 Z" fill="url(#asuit)"/>
+          <!-- Lapels -->
+          <path d="M200 280 L162 322 L176 530 L200 530 Z" fill="rgba(28,22,14,.92)"/>
+          <path d="M200 280 L238 322 L224 530 L200 530 Z" fill="rgba(22,18,11,.92)"/>
+          <!-- Shirt -->
+          <path d="M200 280 L180 306 L184 530 L216 530 L220 306 Z" fill="rgba(238,232,222,.14)"/>
+          <line x1="200" y1="284" x2="200" y2="530" stroke="rgba(238,232,222,.07)" stroke-width="1"/>
+          <!-- Tie hint -->
+          <path d="M196 286 L204 286 L206 400 L200 420 L194 400 Z" fill="rgba(180,50,30,.2)"/>
+          <!-- Neck -->
+          <rect x="180" y="232" width="40" height="54" rx="8" fill="url(#askin)"/>
+          <!-- Head -->
+          <ellipse cx="200" cy="188" rx="70" ry="82" fill="url(#askin)"/>
+          <!-- face shading -->
+          <ellipse cx="184" cy="174" rx="24" ry="30" fill="rgba(170,120,82,.14)"/>
+          <ellipse cx="216" cy="174" rx="24" ry="30" fill="rgba(170,120,82,.1)"/>
+          <!-- Hair -->
+          <path d="M130 168 Q130 106 200 104 Q270 106 270 168 L270 150 Q270 98 200 96 Q130 98 130 150 Z" fill="rgba(22,14,8,.96)"/>
+          <!-- side hair -->
+          <path d="M130 150 L130 180 Q128 172 132 168" fill="rgba(22,14,8,.9)"/>
+          <path d="M270 150 L270 180 Q272 172 268 168" fill="rgba(22,14,8,.9)"/>
+          <!-- Eyes -->
+          <ellipse cx="176" cy="182" rx="11" ry="7.5" fill="rgba(22,14,8,.92)"/>
+          <ellipse cx="224" cy="182" rx="11" ry="7.5" fill="rgba(22,14,8,.92)"/>
+          <circle cx="177" cy="181" r="5.5" fill="rgba(48,32,18,.82)"/>
+          <circle cx="225" cy="181" r="5.5" fill="rgba(48,32,18,.82)"/>
+          <circle cx="177" cy="181" r="2.5" fill="rgba(12,8,4,1)"/>
+          <circle cx="225" cy="181" r="2.5" fill="rgba(12,8,4,1)"/>
+          <circle cx="178.5" cy="179.5" r=".9" fill="rgba(255,255,255,.45)"/>
+          <circle cx="226.5" cy="179.5" r=".9" fill="rgba(255,255,255,.45)"/>
+          <!-- Brows -->
+          <path d="M163 170 Q176 166 189 169" fill="none" stroke="rgba(22,14,8,.9)" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M211 169 Q224 166 237 170" fill="none" stroke="rgba(22,14,8,.9)" stroke-width="2.8" stroke-linecap="round"/>
+          <!-- Nose -->
+          <path d="M198 190 Q194 208 188 215 Q200 219 212 215 Q206 208 202 190" fill="none" stroke="rgba(148,98,62,.38)" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Mouth -->
+          <path d="M184 228 Q200 238 216 228" fill="none" stroke="rgba(128,82,52,.7)" stroke-width="1.9" stroke-linecap="round"/>
+          <!-- Ears -->
+          <ellipse cx="130" cy="192" rx="11" ry="16" fill="url(#askin)"/>
+          <ellipse cx="270" cy="192" rx="11" ry="16" fill="url(#askin)"/>
+          <!-- name plate -->
+          <rect x="58" y="464" width="284" height="50" fill="rgba(8,6,3,.75)"/>
+          <text x="200" y="485" text-anchor="middle" fill="rgba(200,168,74,.82)" font-size="11.5" font-family="serif" font-weight="300" letter-spacing="4">TUSHAR SINGH</text>
+          <text x="200" y="502" text-anchor="middle" fill="rgba(244,234,198,.32)" font-size="6" font-family="monospace" letter-spacing="3">CREATIVE DIRECTOR</text>
+        </svg>
+        <div class="p-acc"></div>
+        <div class="p-acc-b"></div>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="a-eye">Creative Director · Visionary · Architect of Campaigns</div>
+      <h2 class="a-name">Tushar<br>Singh</h2>
+      <div class="a-role">Creative Director · AI Art Director · Brand Strategist</div>
+      <blockquote class="a-quote">"I don't create ads. I construct emotional architectures where technology meets the ineffable human desire to be seen, moved, and remembered."</blockquote>
+      <p class="a-bio">With over a decade directing global campaigns across beauty, luxury, tech, and wellness, I've built a practice at the intersection of cultural intelligence and artificial intelligence. My work lives where data-driven strategy meets cinematic instinct — crafting narratives that earn attention, build desire, and convert conviction into action.<br><br>Today I lead a hybrid studio that deploys cutting-edge AI tools not to replace creativity, but to accelerate it. Every campaign is a collaboration between human vision and machine precision.</p>
+      <div class="a-stats">
+        <div><div class="stat-v">120+</div><div class="stat-l">Campaigns Directed</div></div>
+        <div><div class="stat-v">$40M+</div><div class="stat-l">Revenue Generated</div></div>
+        <div><div class="stat-v">18</div><div class="stat-l">Global Markets</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="band"></div>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="rv">
+      <div style="font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--go);font-weight:700;margin-bottom:1.1rem">Let's Create Together</div>
+      <h2 class="c-title">Start a<br><em>Conversation</em></h2>
+      <p class="c-info">Available for brand campaigns, AI creative direction, consulting, and speaking engagements. Response within 24 hours.</p>
+      <div class="soc-links">
+        <a href="#" class="soc-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@tushar.axiom</span><span class="soc-arr">→</span></a>
+        <a href="#" class="soc-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 4s-1 3-3 3.5C17.8 2.8 14 2 12 4c-2 2-2 6 0 8-2-1-5-3-6-7C4 8 3 12 5 14c-1 0-3-1-3-1 1 3 4 5 7 5-2 1-4 2-7 2 3 2 7 3 10 2 5-1 8-5 9-10l3-8z"/></svg><span>@axiomcreative_</span><span class="soc-arr">→</span></a>
+        <a href="#" class="soc-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><span>Tushar Singh</span><span class="soc-arr">→</span></a>
+        <a href="#" class="soc-link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>hello@axiomcreative.co</span><span class="soc-arr">→</span></a>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="you@company.com"></div>
+      <div class="fg"><label>Project Type</label><input type="text" placeholder="Brand Campaign · AI Creative · Consulting"></div>
+      <div class="fg"><label>Tell Me About Your Vision</label><textarea placeholder="Describe your project, goals, and timeline..."></textarea></div>
+      <button class="sub-btn" id="sb">
+        <span>Send Message</span>
+        <svg width="15" height="9" viewBox="0 0 15 9" fill="none"><path d="M0 4.5h13M9 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">AXI<span style="color:var(--go)">O</span>M</div>
+  <div class="f-copy">© 2025 Tushar Singh · All Rights Reserved</div>
+  <div class="f-tag">v2025.AI.01</div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.ugc-item,.comm-card,.di,.camp-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(.3)';curR.style.width='58px';curR.style.height='58px';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.width='38px';curR.style.height='38px';});
+});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',window.scrollY>50));
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+document.getElementById('sb').addEventListener('click',function(){
+  this.innerHTML='<span>✓ Message Sent</span>';this.style.background='rgba(24,104,80,.88)';
+  setTimeout(()=>{this.innerHTML='<span>Send Message</span><svg width="15" height="9" viewBox="0 0 15 9" fill="none"><path d="M0 4.5h13M9 1l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.2"/></svg>';this.style.background='var(--go)';},3000);
+});
+</script>
+</body>
+</html>
